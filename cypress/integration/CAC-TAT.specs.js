@@ -1,8 +1,5 @@
 /// <reference types="Cypress" />
 
-const { expect } = require("chai")
-const { each } = require("cypress/types/jquery")
-
 describe('Central de Atendimento ao Cliente TAT', function() {
 
     beforeEach(() => {
@@ -121,7 +118,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     it('seleciona um arquivo da pasta fixtures', () => {
         cy.get('input[type="file"]')
             .should('not.have.value')
-            .selectFile('.cypress/fixtures/example.json')
+            .selectFile('cypress/fixtures/example.json')
             .should(function($input) {
                 expect($input[0].files[0].name).to.equal('example.json')
         })
@@ -129,7 +126,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     it('seleciona um arquivo simulando um drag-and-drop', () => {
         cy.get('input[type="file"]')
             .should('not.have.value')
-            .selectFile('.cypress/fixtures/example.json', { action : 'drag-drop' })
+            .selectFile('cypress/fixtures/example.json', { action : 'drag-drop' })
             .should(function($input) {
                 expect($input[0].files[0].name).to.equal('example.json')
         })
@@ -145,7 +142,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
     })
 
-    it.only('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
         cy.get('#privacy a').should('have.attr', 'target', '_blank')
     })
 
